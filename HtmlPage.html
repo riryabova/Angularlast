@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>To do list</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="Style.css" />
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+    <script type="text/javascript" src="filter.js"></script>
+    <script type="text/javascript" src="prcolor.js"></script>
+    </head>
+ 
+<body>
+       <h1>to do list</h1>
+    <div ng-controller="Contorller1">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <form name="myForm">
+                    <input type="text" id="input1" placeholder="Task" ng-model="newItem.name" />
+                    <input list="myList" type="text" id="input2" placeholder="Priority" ng-model="newItem.priority" />
+                    <datalist id="myList">
+                        <option value="high">
+                        <option value="medium">
+                        <option value="low">
+                    </datalist>
+                    <input type="text" id="input3" placeholder="author" ng-model="newItem.author" />
+                    <button class="btn btn-success" ng-click="add()">add new task</button>
+                </form>
+            </div>
+
+            <div class="col-sm-6">
+                <h3>Actual</h3>
+
+
+
+                <table id="table1">
+                    <tbody>
+                        <tr ng-repeat="i in items">
+                            <td>{{i.name}}-</td>
+                            <td prioritycolor> {{i.priority}}-</td>
+                            <td>{{i.author}}</td>
+                            <td>
+                                <button ng-click="replace(i.name, i.priority, i.author, i)">Achieved</button>
+                            </td>
+                            <td>
+                                <button ng-click="del(i)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="col-sm-6">
+
+                    <h4>Archive</h4>
+                    <table id="table2">
+                        <tbody>
+                            <tr ng-repeat="i in items2">
+                                <td>{{i.name}}-</td>
+                                <td>{{i.priority}}-</td>
+                                <td>{{i.author }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
